@@ -1,11 +1,14 @@
 [project]
 name = "Vulnerable-file-reader-server"
-version = "0.1.0"
+version = "0.2.0"
 description = "File reader server with MCP integration"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "mcp[cli]==1.6.0"
+    "mcp[cli]==1.6.0",
+    "python-dotenv",
+    "requests",
+    "tqdm"  # Optional: for progress bars
 ]
 
 [build-system]
@@ -15,3 +18,15 @@ build-backend = "hatchling.build"
 # Explicitly specify which files to include in the build
 [tool.hatch.build.targets.wheel]
 packages = ["."]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.vulture]
+min_confidence = 80
+paths = ["."]
